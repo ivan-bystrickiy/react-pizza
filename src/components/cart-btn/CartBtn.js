@@ -2,12 +2,12 @@ import CartImg from '../../images/icons/cart.svg'
 import { Btn } from '../btn/Btn'
 import './CartBtn.scss'
 
-function CartBtn() {
+function CartBtn({cartCount, cartPrice}) {
   return (
     <Btn className="CartBtn">
-      <span className="CartBtn__price">520 ₽</span>
+      <span className="CartBtn__price">{cartPrice} ₽</span>
       <img className="CartBtn__icon" src={CartImg} />
-      <span className="CartBtn__count">3</span>
+      <span className="CartBtn__count">{cartCount}</span>
     </Btn>
   )
 }

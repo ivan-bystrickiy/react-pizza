@@ -2,10 +2,18 @@ import './Btn.scss'
 
 function Btn(props) {
 
-  const { className: customClassName = '' } = props
+  let {
+    className: customClassName = '',
+    style = 'fill',
+    ...rest
+  } = props
+
+  let className = "btn "
+  className += `btn-${style}-primary `
+  className += customClassName
 
   return (
-    <button className={"btn btn-primary " + customClassName}>
+    <button className={className} {...rest}>
       {props.children}
     </button>
   )

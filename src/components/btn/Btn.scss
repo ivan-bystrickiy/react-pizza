@@ -11,7 +11,13 @@ button {
   font-size: 16px;
 }
 
-.btn-primary {
+.btn-fill-primary {
   background: #FE5F1E;
   color: #fff;
+}
+
+.btn-outline-primary {
+  background: none;
+  color: #FE5F1E;
+  border: 1px solid #FE5F1E;
 }
