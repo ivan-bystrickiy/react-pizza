@@ -2,11 +2,15 @@
 function PizzaItem(props) {
   const { data } = props
 
+  const addToCart = () => {
+    console.log(data)
+  }
+
   return (
     <div className="PizzaItem">
       <img src={data.image} />
       {data.name}
-      <button>+ Добавить</button>
+      <button onClick={addToCart}>+ Добавить</button>
     </div>
   )
 }

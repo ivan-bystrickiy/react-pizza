@@ -6,8 +6,10 @@ import "./Header.scss"
 function Header() {
   return (
     <header className="Header">
-      <Logo />
-      <CartBtn />
+      <div class="container">
+        <Logo />
+        <CartBtn />
+      </div>
     </header>
   )
 }
