@@ -1,3 +1,5 @@
+import './PizzaItem.scss'
+import {Btn} from '../btn/Btn'
 
 function PizzaItem(props) {
   const { data } = props
@@ -8,9 +10,12 @@ function PizzaItem(props) {
 
   return (
     <div className="PizzaItem">
-      <img src={data.image} />
-      {data.name}
-      <button onClick={addToCart}>+ Добавить</button>
+      <img className="PizzaItem__img" src={data.image} />
+      <h3 className="PizzaItem__name">{data.name}</h3>
+      <div className="PizzaItem__controls">
+        <strong className="PizzaItem__price">от 395 ₽</strong>
+        <Btn>+ Добавить</Btn>
+      </div>
     </div>
   )
 }

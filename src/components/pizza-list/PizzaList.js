@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { api } from "../../api"
 import { PizzaItem } from "../pizza-item/PizzaItem"
+import './PizzaList.scss'
 
 function PizzaList() {
   let [pizzas, setPizzas] = useState({
@@ -40,10 +41,15 @@ function PizzaList() {
 
   return (
     <div className="PizzaList">
-      <h1>Все пиццы</h1>
-      {pizzas.list.map((pizzaData, idx) => (
-        <PizzaItem data={pizzaData} key={idx} />
-      ))}
+      <div class="container">
+        <h1>Все пиццы</h1>
+
+        <div className="PizzaList__wrap">
+          {pizzas.list.map((pizzaData, idx) => (
+            <PizzaItem data={pizzaData} key={idx} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
