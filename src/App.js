@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {Switch, Route} from 'react-router-dom'
+import { Cart } from "./components/cart/Cart";
 import { Header } from "./components/header/Header";
 import { PizzaList } from "./components/pizza-list/PizzaList";
 
@@ -55,9 +56,7 @@ function App() {
       <Switch>
         <Route path="/cart">
           <Header cartCount={cartLength} cartPrice={cartPrice} />
-          <div>
-            Корзина
-          </div>
+          <Cart />
         </Route>
         <Route path="/">
           <Header cartCount={cartLength} cartPrice={cartPrice} />
