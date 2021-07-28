@@ -41,6 +41,32 @@ function App() {
     }
   }
 
+  const deleteFromCart = (pizza, deleteAll = false) => {
+    // 1. Проверяю есть ли в корзине эта пицца и кол-во больше 1
+    if (state.cart[pizza.id] && state.cart[pizza.id].count > 1 && !deleteAll) {
+      // 2. Если уже есть и кол-во больше 1: Уменьшаю count у этой пиццы на 1
+      setState({
+        ...state,
+        cart: {
+          ...state.cart,
+          [pizza.id]: {
+            ...state.cart[pizza.id],
+            count: state.cart[pizza.id].count - 1,
+          }
+        }
+      })
+    } else {
+      // 2. Если вдруг пиццы такой нету или кол-во = 1: Удаляю из корзины
+      const newCart = {...state.cart}
+      delete newCart[pizza.id]
+
+      setState({
+        ...state,
+        cart: newCart
+      })
+    }
+  }
+
   // Вычисления
   let cartPrice   = 0
   let cartLength  = 0
@@ -56,7 +82,7 @@ function App() {
       <Switch>
         <Route path="/cart">
           <Header cartCount={cartLength} cartPrice={cartPrice} />
-          <Cart />
+          <Cart cart={state.cart} addToCart={addToCart} deleteFromCart={deleteFromCart} />
         </Route>
         <Route path="/">
           <Header cartCount={cartLength} cartPrice={cartPrice} />
