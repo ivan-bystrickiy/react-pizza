@@ -46,7 +46,7 @@ function PizzaList({addToCart, cart}) {
 
         <div className="PizzaList__wrap">
           {pizzas.list.map((pizzaData, idx) => (
-            <PizzaItem data={pizzaData} key={idx} addToCart={addToCart} cart={cart} />
+            <PizzaItem pizza={pizzaData} key={idx} addToCart={addToCart} cart={cart} />
           ))}
         </div>
       </div>

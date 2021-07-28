@@ -6,6 +6,10 @@
   margin-left: 15px;
   margin-right: 15px;
 
+  & .btn > span {
+    line-height: 22px;
+  }
+
   &__img {
     margin-bottom: 15px;
   }
@@ -27,5 +31,17 @@
   &__price {
     font-weight: bold;
     font-size: 22px;
+  }
+
+  &__count {
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    background: #EB5A1E;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-left: 8px;
   }
 }
