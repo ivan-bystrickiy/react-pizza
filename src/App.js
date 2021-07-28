@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Switch, Route} from 'react-router-dom'
 import { Header } from "./components/header/Header";
 import { PizzaList } from "./components/pizza-list/PizzaList";
 
@@ -51,8 +52,18 @@ function App() {
 
   return (
     <div className="App">
-      <Header cartCount={cartLength} cartPrice={cartPrice} />
-      <PizzaList addToCart={addToCart} cart={state.cart} />
+      <Switch>
+        <Route path="/cart">
+          <Header cartCount={cartLength} cartPrice={cartPrice} />
+          <div>
+            Корзина
+          </div>
+        </Route>
+        <Route path="/">
+          <Header cartCount={cartLength} cartPrice={cartPrice} />
+          <PizzaList addToCart={addToCart} cart={state.cart} />
+        </Route>
+      </Switch>
     </div>
   );
 }

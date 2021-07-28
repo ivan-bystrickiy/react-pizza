@@ -12,7 +12,7 @@ function PizzaItem(props) {
       <h3 className="PizzaItem__name">{pizza.name}</h3>
       <div className="PizzaItem__controls">
         <strong className="PizzaItem__price">от {pizza.price} ₽</strong>
-        <Btn style="outline" onClick={() => addToCart(pizza)}>
+        <Btn theme="outline" onClick={() => addToCart(pizza)}>
           <span>+ Добавить</span>
           {cartData && (
             <span className="PizzaItem__count">
