@@ -3,12 +3,12 @@ import { Logo } from "../logo/Logo"
 
 import "./Header.scss"
 
-function Header({cartCount, cartPrice}) {
+function Header() {
   return (
     <header className="Header">
-      <div class="container">
+      <div className="container">
         <Logo />
-        <CartBtn cartCount={cartCount} cartPrice={cartPrice} />
+        <CartBtn />
       </div>
     </header>
   )

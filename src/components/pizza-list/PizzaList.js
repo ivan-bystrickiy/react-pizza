@@ -3,7 +3,7 @@ import { api } from "../../api"
 import { PizzaItem } from "../pizza-item/PizzaItem"
 import './PizzaList.scss'
 
-function PizzaList({addToCart, cart}) {
+function PizzaList() {
   let [pizzas, setPizzas] = useState({
     loading: false,
     error: null,
@@ -41,12 +41,12 @@ function PizzaList({addToCart, cart}) {
 
   return (
     <div className="PizzaList">
-      <div class="container">
+      <div className="container">
         <h1 className="PizzaList__title">Все пиццы</h1>
 
         <div className="PizzaList__wrap">
           {pizzas.list.map((pizzaData, idx) => (
-            <PizzaItem pizza={pizzaData} key={idx} addToCart={addToCart} cart={cart} />
+            <PizzaItem pizza={pizzaData} key={idx} />
           ))}
         </div>
       </div>

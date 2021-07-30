@@ -4,15 +4,14 @@ import './CartItem.scss'
 import minusIcon from '../../images/icons/minus.svg'
 import plusIcon from '../../images/icons/plus.svg'
 import delIcon from '../../images/icons/del.svg'
+import { useDispatch } from "react-redux"
+import { addToCart, deleteFromCart } from "../../store/cart"
 
-function CartItem({item, addToCart, deleteFromCart}) {
+function CartItem({item}) {
   const {count, pizza: {image, name, price}} = item
   
-  // const count = item.count
-  // const image = item.pizza.image
-  // const name = item.pizza.name
-  // const price = item.pizza.price
- 
+  const dispatch = useDispatch()
+
   return (
     <div className="CartItem">
       <div className="CartItem__preview">
@@ -22,16 +21,17 @@ function CartItem({item, addToCart, deleteFromCart}) {
         </div>
       </div>
       <div className="CartItem__controls">
-        <Btn theme="outline" onClick={() => deleteFromCart(item.pizza)}>
+        <Btn theme="outline" onClick={() => dispatch(deleteFromCart({pizza: item.pizza}))}>
           <img src={minusIcon} />
         </Btn>
         <span>{count}</span>
-        <Btn theme="outline" onClick={() => addToCart(item.pizza)}>
+        <Btn theme="outline" onClick={() => dispatch(addToCart({ pizza: item.pizza }))}>
           <img src={plusIcon} />
         </Btn>
       </div>
       <div className="CartItem__sum">{count * price}</div>
-      <Btn theme="outline" className="CartItem__delete" onClick={() => deleteFromCart(item.pizza, true)}>
+      <Btn theme="outline" className="CartItem__delete"
+           onClick={() => dispatch(deleteFromCart({ pizza: item.pizza, deleteAll: true}))}>
         <img src={delIcon} />
       </Btn>
     </div>

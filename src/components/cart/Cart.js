@@ -7,12 +7,24 @@ import { Btn } from '../btn/Btn'
 import "./Cart.scss"
 import { CartItem } from '../cart-item/CartItem'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-function Cart({cart, addToCart, deleteFromCart}) {
+function Cart() {
+  const cart = useSelector((state) => state.cart.cart)
+
+  // Вычисления
+  let cartPrice = 0
+  let cartLength = 0
+  // 1. Пройти циклом и сумировать
+  Object.values(cart).forEach(function (cartItem) {
+    cartPrice += cartItem.count * cartItem.pizza.price
+    cartLength += cartItem.count
+  })
+
   if (!Object.keys(cart).length) {
     return (
       <div className="container">
-        <div className="Cart" style={{textAlign: 'center'}}>
+        <div className="Cart" style={{ textAlign: 'center' }}>
           <Link to="/">
             <img src={emptyCartImg} />
           </Link>
@@ -39,18 +51,16 @@ function Cart({cart, addToCart, deleteFromCart}) {
             .map(cartItem => (
               <CartItem
                 item={cartItem}
-                addToCart={addToCart}
-                deleteFromCart={deleteFromCart}
                 key={cartItem.pizza.id}
               />
             ))}
         </div>
         <div className="Cart__summary">
           <div className="Cart__count">
-            Всего пицц: <b>3 шт.</b>
+            Всего пицц: <b>{cartLength} шт.</b>
           </div>
           <div className="Cart__sum">
-            Сумма заказа: <b>900 ₽</b>
+            Сумма заказа: <b>{cartPrice} ₽</b>
           </div>
         </div>
         <div className="Cart__actions">
@@ -65,4 +75,4 @@ function Cart({cart, addToCart, deleteFromCart}) {
   )
 }
 
-export {Cart}
+export { Cart }
