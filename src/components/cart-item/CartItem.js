@@ -7,7 +7,12 @@ import delIcon from '../../images/icons/del.svg'
 
 function CartItem({item, addToCart, deleteFromCart}) {
   const {count, pizza: {image, name, price}} = item
-
+  
+  // const count = item.count
+  // const image = item.pizza.image
+  // const name = item.pizza.name
+  // const price = item.pizza.price
+ 
   return (
     <div className="CartItem">
       <div className="CartItem__preview">

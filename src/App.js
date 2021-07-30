@@ -77,8 +77,20 @@ function App() {
   })
   // 2. array.reduce()
 
+  // const warning = (msg) => {
+  //   alert(msg)
+  // }
+
   return (
     <div className="App">
+
+      {/* <button onClick={warning.bind(null, 'Boooom!')}> */}
+      {/* <div style={{margin: '30px 0'}}>
+        <button onClick={() => warning('Booooom!')}>
+          Click me!
+        </button>
+      </div> */}
+
       <Switch>
         <Route path="/cart">
           <Header cartCount={cartLength} cartPrice={cartPrice} />
