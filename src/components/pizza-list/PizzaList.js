@@ -2,35 +2,26 @@ import { useEffect, useState } from "react"
 import { api } from "../../api"
 import { PizzaItem } from "../pizza-item/PizzaItem"
 import './PizzaList.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading, setPizzasList, setError } from '../../store/pizza'
 
 function PizzaList() {
-  let [pizzas, setPizzas] = useState({
-    loading: false,
-    error: null,
-    list: [],
-  })
+  const dispatch = useDispatch()
+  const pizzas = useSelector((state) => state.pizzas)
 
   useEffect(() => {
     loadPizzas()
   }, [])
 
   const loadPizzas = () => {
-    setPizzas({
-      loading: true,
-      error: null,
-      list: [],
-    })
+    if (pizzas.list.length) return
+
+    dispatch(setLoading(true))
+
     api.getPizzas()
-      .then(res => setPizzas({
-        loading: false,
-        error: null,
-        list: res.pizzas
-      }))
-      .catch(err => setPizzas({
-        loading: false,
-        error: err.error,
-        list: []
-      }))
+      .then(res => dispatch(setPizzasList(res.pizzas)))
+      .catch(err => dispatch(setError(err.error)))
+      .finally(() => dispatch(setLoading(false)))
   }
 
   console.log(pizzas);

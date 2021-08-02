@@ -8,12 +8,18 @@ export const pizzaSlice = createSlice({
     list: [],
   },
   reducers: {
-    startLoading: (state) => null,
-    setPizzas: (state) => null,
-    endLoading: (state) => null,
+    setLoading: (state, {payload: loading}) => {
+      state.loading = loading
+    },
+    setError: (state, {payload: error}) => {
+      state.error = error
+    },
+    setPizzasList: (state, {payload: pizzas}) => {
+      state.list = pizzas
+    },
   },
 })
 
-export const { startLoading, endLoading, setPizzas } = pizzaSlice.actions
+export const { setLoading, setError, setPizzasList } = pizzaSlice.actions
 
 export default pizzaSlice.reducer
